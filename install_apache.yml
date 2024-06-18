@@ -1,0 +1,21 @@
+---
+
+- hosts: all 
+  become: true
+  tasks: 
+
+  - name: Install HTTPD Package 
+    ansible.builtin.dnf:
+      name: httpd >=2.4
+      state: present 
+  - name: Enable HTTPD 
+    ansible.builtin.service: 
+      name: httpd 
+      enabled: yes 
+  - name: Start HTTPD Service 
+    ansible.builtin.service:
+      name: httpd
+      state: started 
+
+
+
